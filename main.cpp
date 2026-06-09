@@ -2,8 +2,7 @@
 #include <iostream>
 
 int main() {
-    // Inicializa a matriz 3D com tamanho 50x50x50
-    Sculptor escultura(50, 50, 50);
+    Sculptor escultura(50, 50, 50); // Inicializa a matriz 3D com tamanho 50x50x50
 
     // Cria uma base grande (Caixa) - Cor: Cinzento
     escultura.setColor(0.5, 0.5, 0.5, 1.0);
@@ -30,8 +29,7 @@ int main() {
     escultura.setColor(0.0, 1.0, 0.0, 1.0);
     escultura.putBox(22, 28, 10, 30, 22, 28);
 
-    // Exporta a escultura construída
-    escultura.writeOFF("saida.off");
+    escultura.writeOFF("saida.off"); // Exporta a escultura construída
 
     return 0;
 }
