@@ -2,34 +2,22 @@
 #include <iostream>
 
 int main() {
-    Sculptor escultura(50, 50, 50); // Inicializa a matriz 3D com tamanho 50x50x50
+    Sculptor escultura(51, 100, 51);
 
-    // Cria uma base grande (Caixa) - Cor: Cinzento
-    escultura.setColor(0.5, 0.5, 0.5, 1.0);
-    escultura.putBox(0, 49, 0, 9, 0, 49);
+    escultura.setColor(1.0, 1.0, 1.0, 0.0);
+    escultura.putEllipsoid(25, 99, 25, 20, 50, 20);
+    escultura.cutEllipsoid(25, 99, 25, 18, 46, 18);
+    escultura.putEllipsoid(25, 0, 25, 20, 50, 20);
+    escultura.cutEllipsoid(25, 0, 25, 18, 46, 18);
 
-    // Corta o centro da base para fazer uma piscina
-    escultura.cutBox(5, 44, 5, 9, 5, 44);
+    escultura.setColor(0.59, 0.29, 0.0, 1.0);
+    escultura.putEllipsoid(25, 1, 25, 25, 1, 25);
+    escultura.putEllipsoid(25, 0, 25, 25, 1, 25);
+    escultura.cutVoxel(25, 2, 25);
+    escultura.putEllipsoid(25, 99, 25, 25, 1, 25);
+    escultura.putEllipsoid(25, 98, 25, 25, 1, 25);
+    escultura.cutVoxel(25, 97, 25);
 
-    // Cria uma esfera no centro - Cor: Azul
-    escultura.setColor(0.0, 0.0, 1.0, 1.0);
-    escultura.putSphere(25, 15, 25, 8);
-
-    // Corta o interior da esfera para a tornar oca
-    escultura.cutSphere(25, 15, 25, 5);
-
-    // Adiciona um elipsoide a "flutuar" no topo - Cor: Vermelho
-    escultura.setColor(1.0, 0.0, 0.0, 1.0);
-    escultura.putEllipsoid(25, 35, 25, 15, 5, 10);
-    
-    // Corta o centro do elipsoide
-    escultura.cutEllipsoid(25, 35, 25, 5, 5, 15);
-
-    // Adiciona um pilar central - Cor: Verde
-    escultura.setColor(0.0, 1.0, 0.0, 1.0);
-    escultura.putBox(22, 28, 10, 30, 22, 28);
-
-    escultura.writeOFF("saida.off"); // Exporta a escultura construída
-
+    escultura.writeOFF("saida.off");
     return 0;
 }
