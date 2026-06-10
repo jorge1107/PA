@@ -25,6 +25,7 @@ int main() {
 
     escultura.setColor(1.0, 0.0, 0.0, 1.0);
     escultura.putSphere(25, 63, 25, 10);
+    escultura.cutSphere(25, 66, 25, 10);
     escultura.putVoxel(25, 2, 25);
 
     escultura.cutBox(26, 50, 0, 100, 0, 24);
