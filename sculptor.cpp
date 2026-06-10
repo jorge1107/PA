@@ -6,13 +6,13 @@
 
 Sculptor::Sculptor(int _nx, int _ny, int _nz) {
     nx = _nx; ny = _ny; nz = _nz;
-    r = 1.0; g = 1.0; b = 1.0; a = 1.0; // Cor padrão: Branco
+    r = 1.0; g = 1.0; b = 1.0; a = 1.0; // Cor padrão: Branco opaco
     
     // Alocação dinâmica da matriz 3D
-    v = new Voxel**[nx];
-    for(int i = 0; i < nx; i++) {
+    v = new Voxel**[nx];//X
+    for(int i = 0; i < nx; i++) { //Y
         v[i] = new Voxel*[ny];
-        for(int j = 0; j < ny; j++) {
+        for(int j = 0; j < ny; j++) { //Z
             v[i][j] = new Voxel[nz];
             for(int k = 0; k < nz; k++) {
                 v[i][j][k].show = false; // Começa vazio
@@ -29,11 +29,11 @@ Sculptor::~Sculptor() {
     // Libertação da memória alocada
     for(int i = 0; i < nx; i++) {
         for(int j = 0; j < ny; j++) {
-            delete[] v[i][j];
+            delete[] v[i][j]; //Z
         }
-        delete[] v[i];
+        delete[] v[i]; //Y
     }
-    delete[] v;
+    delete[] v; //X
 }
 
 void Sculptor::setColor(float r, float g, float b, float a) {
@@ -163,7 +163,7 @@ void Sculptor::writeOFF(const std::string filename) {
 
     // Escreve o cabeçalho OFF
     fout << "OFF\n";
-    // Vértices, Faces, Arestas (Arestas podem ser 0)
+    // Vértices, Faces, Arestas (Arestas podem ser 0, depois tentar fórmula de Euler para verificar V + F = A + 2)
     // 1 Voxel = 8 vértices e 6 faces
     fout << 8 * numVoxels << " " << 6 * numVoxels << " 0\n";
 
@@ -172,7 +172,7 @@ void Sculptor::writeOFF(const std::string filename) {
         for(int j = 0; j < ny; j++) {
             for(int k = 0; k < nz; k++) {
                 if(v[i][j][k].show) {
-                    // Centroide do voxel em (i, j, k) e os 8 cantos
+                    // Centro do voxel em (i, j, k) e os 8 cantos
                     fout << i - 0.5 << " " << j + 0.5 << " " << k - 0.5 << "\n" // 0
                          << i - 0.5 << " " << j - 0.5 << " " << k - 0.5 << "\n" // 1
                          << i + 0.5 << " " << j - 0.5 << " " << k - 0.5 << "\n" // 2
@@ -180,14 +180,14 @@ void Sculptor::writeOFF(const std::string filename) {
                          << i - 0.5 << " " << j + 0.5 << " " << k + 0.5 << "\n" // 4
                          << i - 0.5 << " " << j - 0.5 << " " << k + 0.5 << "\n" // 5
                          << i + 0.5 << " " << j - 0.5 << " " << k + 0.5 << "\n" // 6
-                         << i + 0.5 << " " << j + 0.5 << " " << k + 0.5 << "\n"; // 7
+                         << i + 0.5 << " " << j + 0.5 << " " << k + 0.5 << "\n";// 7
                 }
             }
         }
     }
 
     fout << std::fixed << std::setprecision(2);
-    // 2. Escrever a constituição das faces e respetivas cores
+    // 2. Escrever a constituição das faces e respectivas cores
     int index = 0;
     for(int i = 0; i < nx; i++) {
         for(int j = 0; j < ny; j++) {
@@ -213,5 +213,5 @@ void Sculptor::writeOFF(const std::string filename) {
     }
 
     fout.close();
-    std::cout << "Ficheiro " << filename << " gerado com sucesso!" << std::endl;
+    std::cout << "Arquivo " << filename << " gerado com sucesso!" << std::endl;
 }
