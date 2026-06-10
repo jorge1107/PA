@@ -18,6 +18,26 @@ int main() {
     escultura.putEllipsoid(25, 98, 25, 25, 1, 25);
     escultura.cutVoxel(25, 97, 25);
 
+    escultura.putBox(1, 3, 2 ,98, 24, 26);
+    escultura.putBox(24, 26, 2 ,98, 1, 3);
+    escultura.putBox(47, 49, 2 ,98, 24, 26);
+    escultura.putBox(24, 26, 2 ,98, 47, 49);
+
+    escultura.setColor(1.0, 0.0, 0.0, 1.0);
+    escultura.putSphere(25, 63, 25, 10);
+    escultura.putVoxel(25, 2, 25);
+
+    escultura.cutBox(26, 50, 0, 100, 0, 24);
+
     escultura.writeOFF("saida.off");
     return 0;
 }
+
+//Sculptor
+//setColor
+//putEllipsoid
+//cutEllipsoid
+//cutVoxel
+//putBox
+//putSphere
+//cutBox
