@@ -74,7 +74,7 @@ int main() {
 
     // Se o escultor foi criado (comando 'dim' foi lido)
     if(escultor != nullptr) {
-        // Polimorfismo em ação: 'draw' se comporta de forma diferente para cada tipo
+        // Polimorfismo (draw se comporta de forma diferente para cada tipo)
         for(size_t i = 0; i < figuras.size(); i++) {
             figuras[i]->draw(*escultor);
         }
