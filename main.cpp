@@ -41,4 +41,6 @@ int main() {
 //cutVoxel
 //putBox
 //putSphere
+//cutSphere
+//putVoxel
 //cutBox
