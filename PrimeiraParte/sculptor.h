@@ -1,14 +1,7 @@
 #ifndef SCULPTOR_H
 #define SCULPTOR_H
 
-#include <string>
-
-// Estrutura do Voxel
-struct Voxel {
-    float r, g, b; // Cores [0, 1]
-    float a;       // Transparência [0, 1]
-    bool show;     // Incluído ou não
-};
+#include "voxel.h"
 
 class Sculptor {
 private:
@@ -27,7 +20,7 @@ public:
     void cutSphere(int xcenter, int ycenter, int zcenter, int radius);  //Desativa todos os voxels que satisfazem à equação da esfera
     void putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);   //Ativa todos os voxels que satisfazem à equação do elipsóide e atribui aos mesmos a cor atual de desenho
     void cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);   //Desativa todos os voxels que satisfazem à equação do elipsóide
-    void writeOFF(const std::string filename);  //grava a escultura no formato OFF no arquivo filename
+    void writeOFF(const char* filename);  //grava a escultura no formato OFF no arquivo filename
 };
 
 #endif

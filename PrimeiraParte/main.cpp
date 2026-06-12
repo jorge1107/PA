@@ -27,10 +27,13 @@ int main() {
     escultura.putSphere(25, 63, 25, 10);
     escultura.cutSphere(25, 66, 25, 10);
     escultura.putVoxel(25, 2, 25);
+    escultura.putVoxel(25, 18, 25);
+    escultura.putVoxel(25, 36, 25);
+    escultura.putVoxel(25, 45, 25);
 
     escultura.cutBox(26, 50, 0, 100, 0, 24);
 
-    escultura.writeOFF("saida.off");
+    escultura.writeOFF("Escultura.off");
     return 0;
 }
 

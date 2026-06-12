@@ -5,7 +5,14 @@
 #include <sstream>
 #include "sculptor.h"
 #include "figura_geometrica.h"
-#include "figuras.h"
+#include "putvoxel.h"
+#include "cutvoxel.h"
+#include "putbox.h"
+#include "cutbox.h"
+#include "putsphere.h"
+#include "cutsphere.h"
+#include "putellipsoid.h"
+#include "cutellipsoid.h"
 
 int main() {
     // Tenta abrir o arquivo com o roteiro da escultura
@@ -78,7 +85,7 @@ int main() {
         for(size_t i = 0; i < figuras.size(); i++) {
             figuras[i]->draw(*escultor);
         }
-        escultor->writeOFF("saida_avancada.off");
+        escultor->writeOFF("Escultura.off");
         delete escultor;
     }
 
@@ -86,7 +93,5 @@ int main() {
     for(size_t i = 0; i < figuras.size(); i++) {
         delete figuras[i];
     }
-
-    std::cout << "Arquivo gerado com sucesso via Estruturas Avancadas!" << std::endl;
     return 0;
 }
