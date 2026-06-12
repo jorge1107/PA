@@ -145,7 +145,7 @@ void Sculptor::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int r
 void Sculptor::writeOFF(const std::string filename) {
     std::ofstream fout(filename);
     if(!fout.is_open()) {
-        std::cerr << "Erro ao abrir o ficheiro: " << filename << std::endl;
+        std::cerr << "Erro ao criar o arquivo: " << filename << std::endl;
         return;
     }
 
